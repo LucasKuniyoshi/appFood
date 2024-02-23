@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Minha Conta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="power-outline" style="color: white"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="full">
+      <ion-button slot="end" fill="clear">Editar</ion-button> <!-- fill => botao sem contorno -->
+      <ion-label>
+        <h4>Carlos Iatskiu</h4>
+        <p>42991094415 | ciatskiu&#64;gmail.com</p> <!-- &#64 => "@"-->
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" detail="true"> <!-- detail => deixa o ion-item clicavel-->
+      <ion-icon name="home-outline" slot="start" color="dark"></ion-icon>
+      <h5>Gerenciar Endereços</h5>
+    </ion-item> 
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="primary">Últimos Pedidos</ion-label>
+    </ion-list-header>
+    <app-loading-order *ngIf="isLoading"></app-loading-order> <!-- antes de procurar-->
+    <app-empty-screen-account *ngIf="!isLoading && (restaurants?.length == 0)" [model]="model"></app-empty-screen-account> <!-- caso n encontre a busca -->
+
+    <ion-item-group>
+      <app-ultimos-pedidos *ngFor="let restaurant of restaurants" [restaurant]="restaurant"></app-ultimos-pedidos>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

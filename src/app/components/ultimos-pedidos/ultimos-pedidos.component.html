@@ -1,0 +1,42 @@
+<ion-list>
+  <ion-item lines="none">
+    <ion-label>
+      <h4>{{restaurant?.name}}</h4>
+      <ion-text color="medium">
+        <p class="pStyle">{{getPlate(restaurant?.plates)}}</p>        
+        <p class="pStyle">{{getDrink(restaurant?.drinks)}}</p>               
+      </ion-text>   
+      <ion-text>
+        <p style="margin-top: 2%;">R$: {{restaurant?.price}}
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </p>
+      </ion-text>
+      <p style="margin-top: 2%;" class="pStyle">{{restaurant?.city}}</p> 
+      <p>{{restaurant?.date}}</p>
+    </ion-label>
+    
+      <ion-note *ngIf="restaurant?.delivered" slot="end" color="dark">
+        Entregue
+        <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+      </ion-note>
+      <ion-note *ngIf="!restaurant?.delivered" slot="end" color="dark">
+        Não Entregue
+        <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+      </ion-note>
+  </ion-item>
+  
+  <ion-item >
+    <ion-row style="margin-left: 10%;">
+      <ion-col col="6"> <!-- separa a tela em duas metades -->
+        <ion-button fill="outline" expand="block">
+          Pedir Novamente
+        </ion-button>
+      </ion-col>
+      <ion-col col="6">
+        <ion-button fill="outline" expand="block" color="dark">
+          Abrir Reclamação
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-list>
